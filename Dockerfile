@@ -9,8 +9,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
-COPY ["./ResourceAPI.csproj", "ResourceAPI/"]
-RUN dotnet restore "./ResourceAPI.csproj"
+COPY ["ResourceAPI/ResourceAPI.csproj", "ResourceAPI/"]
+RUN dotnet restore "ResourceAPI/ResourceAPI.csproj"
 COPY . .
 WORKDIR "/src/ResourceAPI"
 RUN dotnet build "ResourceAPI.csproj" -c Release -o /app/build
